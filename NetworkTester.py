@@ -8,7 +8,7 @@ from keras.optimizers import RMSprop
 
 batch_size = 512
 num_classes = 10
-epochs = 400
+epochs = 100
 dummy = 0
 # the data shuffled and split between train and test sets
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
@@ -63,7 +63,6 @@ history = model.fit(x_train, y_train,
                     epochs=epochs,
                     verbose=1,
                     validation_data=(x_test, y_test))
-model.save("./mnistNet.hdf5")
 
 score = model.evaluate(x_test, y_test, verbose = 1)
 print("Test loss: ", score[0])
