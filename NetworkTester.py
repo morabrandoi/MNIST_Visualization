@@ -1,9 +1,6 @@
 
 import keras
 
-from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-
 
 from keras.datasets import mnist
 from keras.models import Sequential
@@ -13,7 +10,7 @@ from keras.optimizers import RMSprop
 
 num_classes = 10
 batch_size = 128
-epochs = 20
+epochs = 200
 
 # the data shuffled and split between train and test sets
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -56,11 +53,11 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
                   optimizer=RMSprop(),
                   metrics=["accuracy"])
 
-    early_stop = keras.callbacks.EarlyStopping(monitor='val_loss',
+    early_stop = keras.callbacks.EarlyStopping(monitor="loss",
                                                min_delta=0.001,
                                                patience=0,
-                                               verbose=0,
-                                               mode='auto',
+                                               verbose=1,
+                                               mode='min',
                                                baseline=None)
 
     history = model.fit(x_train, y_train,
@@ -70,20 +67,25 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
                         verbose=1,
                         validation_data=(x_test, y_test))
 
-    score = model.evaluate(x_test, y_test, verbose=1)
-    print("Test loss: ", score[0])
-    print("test accuracy: ", score[1])
+    val_loss_list = history.history["val_loss"]
+    val_acc_list = history.history["val_acc"]
+    acc_list = history.history["acc"]
+    loss_list = history.history["loss"]
+    # score = model.evaluate(x_test, y_test, verbose=1)
+    # print("Test loss: ", score[0])
+    # print("test accuracy: ", score[1])
     print("This is the value from history and should be the same \
-            as test accuracy", history["val_acc"])
+            as test accuracy", history.history["val_acc"][-1])
 
-    print("This is training accuracy", history["acc"])
+    print("This is training accuracy", history.history["acc"][-1])
 
-    return [score[0], score[1]]
+    return [acc_list[-1], loss_list[-1], val_acc_list[-1], val_loss_list[-1]]
+    # return [score[0], score[1]]
 
 
-for num_layers in range(9, 10):
-    for nodes_per in range(9, 10):
+for num_layers in range(1, 10):
+    for nodes_per in range(11, 750, 13):
         appender = open("values.txt", "a")
         values = model_create_and_run(num_layers, nodes_per)
-        appender.write(' '.join(values))
+        appender.write(str(num_layers) + " " + str(nodes_per) + " " + ' '.join([str(e) for e in values]))
         appender.close()
