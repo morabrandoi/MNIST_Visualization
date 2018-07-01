@@ -1,0 +1,3 @@
+nodes function = Constant
+Hidden_Layers    |   Nodes_per_layer  |   accuracy
+
