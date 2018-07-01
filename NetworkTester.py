@@ -54,7 +54,7 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
                   metrics=["accuracy"])
 
     early_stop = keras.callbacks.EarlyStopping(monitor="loss",
-                                               min_delta=0.001,
+                                               min_delta=0.0015,
                                                patience=0,
                                                verbose=1,
                                                mode='min',
