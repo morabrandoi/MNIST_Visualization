@@ -37,7 +37,7 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     # defining model
     model = Sequential()
 
-    model.add(Dense(400, activation="relu", input_shape=(784,)))
+    model.add(Dense(nodes_per_hidden_layer, activation="relu", input_shape=(784,)))
     model.add(Dropout(0, 2))
 
     for _ in range(number_of_hidden_layers):
@@ -87,5 +87,5 @@ for num_layers in range(1, 10):
     for nodes_per in range(11, 750, 13):
         appender = open("values.txt", "a")
         values = model_create_and_run(num_layers, nodes_per)
-        appender.write(str(num_layers) + " " + str(nodes_per) + " " + ' '.join([str(e) for e in values]))
+        appender.write(str(num_layers) + " " + str(nodes_per) + " " + ' '.join([str(e) for e in values]) + "\n")
         appender.close()
