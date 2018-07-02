@@ -1,10 +1,16 @@
 
-cleaned = open("cleaned_data2.txt", "w")
+to_be_cleaned = "L1_5N1_12.txt"
 
-with open("L1_5N1_12.txt") as file:
+output_cleaned = "cleaned_data2.txt"
+
+
+
+cleaned = open(output_cleaned, "w")
+
+with open(to_be_cleaned) as file:
     header = file.readline()
     cleaned.write(header)
-    while(1):
+    while True:
 
 
         line = file.readline()

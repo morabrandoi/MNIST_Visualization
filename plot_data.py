@@ -7,6 +7,13 @@ from mpl_toolkits.mplot3d.axes3d import Axes3D, get_test_data
 import numpy as np
 
 
+
+reading_from = "cleaned_data2.txt"
+
+
+
+
+
 fig = plt.figure()
 
 
@@ -22,9 +29,9 @@ Z1 = [[]] # test loss
 Z2 = [[]] # training accuracy
 
 
-with open('cleaned_data2.txt') as file:
+with open(reading_from) as file:
     header = file.readline()
-    while (1):
+    while True:
         line = file.readline()
         if line == "":
             break
@@ -36,7 +43,6 @@ with open('cleaned_data2.txt') as file:
         Z1[0].append(float(numbers[5]))
         Z2[0].append(float(numbers[2]))
 
-print(X, type(X))
 X = np.array(X)
 Y = np.array(Y)
 Z = np.array(Z)
