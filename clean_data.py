@@ -1,7 +1,7 @@
 
-cleaned = open("cleaned_data.txt", "w")
+cleaned = open("cleaned_data2.txt", "w")
 
-with open("layers0_5_nodes1_20.txt") as file:
+with open("L1_5N1_12.txt") as file:
     header = file.readline()
     cleaned.write(header)
     while(1):

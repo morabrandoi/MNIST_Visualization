@@ -73,13 +73,8 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     acc_list = history.history["acc"]
     loss_list = history.history["loss"]
 
-    print("This is the value from history and should be the same \
-            as test accuracy", history.history["val_acc"][-1])
-
-    print("This is training accuracy", history.history["acc"][-1])
 
     return [acc_list[-1], loss_list[-1], val_acc_list[-1], val_loss_list[-1]]
-    # return [score[0], score[1]]
 
 
 for num_layers in range(0, 4):

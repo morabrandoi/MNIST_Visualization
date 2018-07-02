@@ -22,7 +22,7 @@ Z1 = [[]] # test loss
 Z2 = [[]] # training accuracy
 
 
-with open('cleaned_data.txt') as file:
+with open('cleaned_data2.txt') as file:
     header = file.readline()
     while (1):
         line = file.readline()
