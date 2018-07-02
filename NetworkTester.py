@@ -10,7 +10,7 @@ from keras.optimizers import RMSprop
 
 num_classes = 10
 batch_size = 128
-epochs = 200
+epochs = 100
 
 # the data shuffled and split between train and test sets
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -37,7 +37,8 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     # defining model
     model = Sequential()
 
-    model.add(Dense(nodes_per_hidden_layer, activation="relu", input_shape=(784,)))
+    model.add(Dense(nodes_per_hidden_layer,
+                    activation="relu", input_shape=(784,)))
     model.add(Dropout(0, 2))
 
     for _ in range(number_of_hidden_layers):
@@ -71,9 +72,7 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     val_acc_list = history.history["val_acc"]
     acc_list = history.history["acc"]
     loss_list = history.history["loss"]
-    # score = model.evaluate(x_test, y_test, verbose=1)
-    # print("Test loss: ", score[0])
-    # print("test accuracy: ", score[1])
+
     print("This is the value from history and should be the same \
             as test accuracy", history.history["val_acc"][-1])
 
@@ -83,9 +82,10 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     # return [score[0], score[1]]
 
 
-for num_layers in range(1, 10):
-    for nodes_per in range(11, 750, 13):
-        appender = open("values.txt", "a")
+for num_layers in range(0, 5):
+    for nodes_per in range(1, 20, 2):
+        appender = open("layers0_5_nodes1_20.txt", "a")
         values = model_create_and_run(num_layers, nodes_per)
-        appender.write(str(num_layers) + " " + str(nodes_per) + " " + ' '.join([str(e) for e in values]) + "\n")
+        appender.write(str(num_layers) + " " + str(nodes_per)
+                       + " " + ' '.join([str(e) for e in values]) + "\n")
         appender.close()

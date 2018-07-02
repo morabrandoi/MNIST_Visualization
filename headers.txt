@@ -1,0 +1,2 @@
+nodes function = Constant
+Hidden_Layers    |   Nodes_per_layer  |   accuracy | loss | test_acc | test_loss
