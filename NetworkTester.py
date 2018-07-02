@@ -82,8 +82,8 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     # return [score[0], score[1]]
 
 
-for num_layers in range(0, 5):
-    for nodes_per in range(1, 20, 2):
+for num_layers in range(0, 4):
+    for nodes_per in range(1, 13, 1):
         appender = open("layers0_5_nodes1_20.txt", "a")
         values = model_create_and_run(num_layers, nodes_per)
         appender.write(str(num_layers) + " " + str(nodes_per)
