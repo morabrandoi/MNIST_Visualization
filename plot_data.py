@@ -8,13 +8,14 @@ import numpy as np
 
 
 
-reading_from = "cleaned_data2.txt"
+reading_from = "cleaned_data.txt"
 
 
 
 
 
 fig = plt.figure()
+
 
 
 plot1 = fig.add_subplot(1, 1, 1, projection='3d')

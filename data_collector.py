@@ -8,6 +8,9 @@ from keras.layers import Dense, Dropout
 from keras.optimizers import RMSprop
 
 
+data_saving_to = "L1_4N1_4.txt"
+
+
 num_classes = 10
 batch_size = 128
 epochs = 100
@@ -79,7 +82,7 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
 
 for num_layers in range(0, 4):
     for nodes_per in range(1, 13, 1):
-        appender = open("L1_6N1_20.txt", "a")
+        appender = open(data_saving_to, "a")
         values = model_create_and_run(num_layers, nodes_per)
         appender.write(str(num_layers) + " " + str(nodes_per)
                        + " " + ' '.join([str(e) for e in values]) + "\n")
