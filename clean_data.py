@@ -1,7 +1,7 @@
 
-to_be_cleaned = "L1_5N1_12.txt"
+to_be_cleaned = "raw_data.txt"
 
-output_cleaned = "cleaned_data2.txt"
+output_cleaned = "cleaned_data.txt"
 
 
 

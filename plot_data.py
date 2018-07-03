@@ -25,8 +25,8 @@ plot1 = fig.add_subplot(1, 1, 1, projection='3d')
 # plot a 3D wireframe like in the example mplot3d/wire3d_demo
 X = [[]] #nuber of hidden layers
 Y = [[]] #number of nodes per hidden layer
-Z = [[]] # test accuracy
-Z1 = [[]] # test loss
+Z = [[]] # val accuracy
+Z1 = [[]] # val loss
 Z2 = [[]] # training accuracy
 
 
@@ -52,7 +52,7 @@ Z2 = np.array(Z2)
 
 #plot1
 plot1.scatter(X, Y, Z)
-plot1.scatter(X, Y, Z2)
+#plot1.scatter(X, Y, Z2)
 plot1.set_xlabel('Hidden Layers')
 plot1.set_ylabel('Nodes per Hidden Layer')
 plot1.set_zlabel('Accuracy') # if Z

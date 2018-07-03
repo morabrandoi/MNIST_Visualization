@@ -8,7 +8,9 @@ from keras.layers import Dense, Dropout
 from keras.optimizers import RMSprop
 
 
-data_saving_to = "L1_4N1_4.txt"
+data_saving_to = "raw_data.txt"
+
+repitions = 1
 
 
 num_classes = 10
@@ -57,7 +59,7 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
                   optimizer=RMSprop(),
                   metrics=["accuracy"])
 
-    early_stop = keras.callbacks.EarlyStopping(monitor="loss",
+    early_stop = keras.callbacks.EarlyStopping(monitor="val_acc",
                                                min_delta=0.0015,
                                                patience=3,
                                                verbose=1,
@@ -80,10 +82,11 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     return [acc_list[-1], loss_list[-1], val_acc_list[-1], val_loss_list[-1]]
 
 
-for num_layers in range(0, 4):
-    for nodes_per in range(1, 13, 1):
-        appender = open(data_saving_to, "a")
-        values = model_create_and_run(num_layers, nodes_per)
-        appender.write(str(num_layers) + " " + str(nodes_per)
-                       + " " + ' '.join([str(e) for e in values]) + "\n")
-        appender.close()
+for num_layers in range(0, 5):
+    for nodes_per in range(1, 4, 1):
+        for _ in range(repitions):
+            appender = open(data_saving_to, "a")
+            values = model_create_and_run(num_layers, nodes_per)
+            appender.write(str(num_layers) + " " + str(nodes_per)
+                           + " " + ' '.join([str(e) for e in values]) + "\n")
+            appender.close()
