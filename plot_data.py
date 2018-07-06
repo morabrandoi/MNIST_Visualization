@@ -8,8 +8,8 @@ import numpy as np
 
 
 
-reading_from = "cleaned_data.txt"
-
+#reading_from = "cleaned_data.txt"
+reading_from = "averaged_data.txt"
 
 
 
