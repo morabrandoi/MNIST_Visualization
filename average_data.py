@@ -28,10 +28,7 @@ with open(to_be_averaged) as input_file:
             print(uniqueXY)
         else:
             print("existing")
-            old_value = uniqueXY[(nums[0], nums[1])]
-            print("Old value", old_value)
-            print(uniqueXY)
-            uniqueXY[(nums[0], nums[1])] = old_value.append(nums) # deletes value for some god forsaken reason
+            uniqueXY[(nums[0], nums[1])].append(nums) 
             print(uniqueXY)
 
 
