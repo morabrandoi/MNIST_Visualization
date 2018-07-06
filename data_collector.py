@@ -10,7 +10,7 @@ from keras.optimizers import RMSprop
 
 data_saving_to = "raw_data.txt"
 
-repitions = 1
+repitions = 4
 
 
 num_classes = 10
@@ -61,9 +61,9 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
 
     early_stop = keras.callbacks.EarlyStopping(monitor="val_acc",
                                                min_delta=0.0015,
-                                               patience=3,
+                                               patience=7,
                                                verbose=1,
-                                               mode='min',
+                                               mode='max',
                                                baseline=None)
 
     history = model.fit(x_train, y_train,
@@ -81,7 +81,8 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
 
     return [acc_list[-1], loss_list[-1], val_acc_list[-1], val_loss_list[-1]]
 
-
+# add one to the range bounds because there is already a built in layer from
+# the input layer
 for num_layers in range(0, 5):
     for nodes_per in range(1, 4, 1):
         for _ in range(repitions):
