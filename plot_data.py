@@ -2,15 +2,19 @@
 
 
 import matplotlib
+import sys
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.axes3d import Axes3D, get_test_data
 import numpy as np
 
 
-
-#reading_from = "cleaned_data.txt"
-reading_from = "averaged_data.txt"
-
+decider = sys.argv[1]
+if decider == "c":
+    reading_from = "cleaned_data.txt"
+elif decider == "a":
+    reading_from = "averaged_data.txt"
+else:
+    reading_from = "cleaned_data.txt"
 
 
 
