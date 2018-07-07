@@ -7,15 +7,17 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.axes3d import Axes3D, get_test_data
 import numpy as np
 
-
-decider = sys.argv[1]
-if decider == "c":
-    reading_from = "cleaned_data.txt"
-elif decider == "a":
-    reading_from = "averaged_data.txt"
+if len(sys.argv) == 2:
+    decider = sys.argv[1]
+    if decider == "c":
+        reading_from = "cleaned_data.txt"
+    elif decider == "a":
+        reading_from = "averaged_data.txt"
+    else:
+        print("Not an option. a for averaged, or c for cleaned")
+        reading_from = "averaged_data.txt"
 else:
-    reading_from = "cleaned_data.txt"
-
+    reading_from = "averaged_data.txt"
 
 
 fig = plt.figure()
@@ -55,14 +57,13 @@ Z1 = np.array(Z1)
 Z2 = np.array(Z2)
 
 #plot1
-plot1.scatter(X, Y, Z)
-#plot1.scatter(X, Y, Z2)
+plot1.scatter(X, Y, Z, label="Test Accuracy")
+plot1.scatter(X, Y, Z2, label="Training Accuracy")
 plot1.set_xlabel('Hidden Layers')
 plot1.set_ylabel('Nodes per Hidden Layer')
 plot1.set_zlabel('Accuracy') # if Z
-#plot1.set_zlabel('Test Loss') # if Z1
 plot1.set_title("Performance")
-
+plt.legend(loc=2)
 
 
 
