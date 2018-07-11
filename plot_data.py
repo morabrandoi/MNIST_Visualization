@@ -58,7 +58,7 @@ Z2 = np.array(Z2)
 
 #plot1
 plot1.scatter(X, Y, Z, label="Test Accuracy")
-plot1.scatter(X, Y, Z2, label="Training Accuracy")
+#plot1.scatter(X, Y, Z2, label="Training Accuracy")
 plot1.set_xlabel('Hidden Layers')
 plot1.set_ylabel('Nodes per Hidden Layer')
 plot1.set_zlabel('Accuracy') # if Z

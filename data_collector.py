@@ -10,7 +10,7 @@ from keras.optimizers import RMSprop
 
 data_saving_to = "raw_data.txt"
 
-repitions = 16
+repitions = 40
 
 
 num_classes = 10
@@ -82,9 +82,9 @@ def model_create_and_run(number_of_hidden_layers, nodes_per_hidden_layer):
     return [acc_list[-1], loss_list[-1], val_acc_list[-1], val_loss_list[-1]]
 
 
-for num_layers in range(1, 6):
+for num_layers in range(5, 6):
     num_layers -= 1 # this is an offset because the network by default has 1 layer
-    for nodes_per in range(1, 2, 1):
+    for nodes_per in range(4, 5, 1):
         for _ in range(repitions):
             appender = open(data_saving_to, "a")
             values = model_create_and_run(num_layers, nodes_per)
